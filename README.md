@@ -8,7 +8,7 @@ A simple Google Search UI clone using HTML, CSS, and JavaScript.
 - Responsive and easy to customize
 
 ### Version
-**0.1.0**
+**0.2.0**
 
 ### License
 Copyright (c) 2025 Kushan Siriwardhana.All Right Reserved.
