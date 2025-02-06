@@ -23,6 +23,33 @@
             font-family: Arial, sans-serif;
         }
 
+        .header {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 14px;
+        }
+
+        .header a {
+            text-decoration: none;
+            color: #5f6368;
+        }
+        .google-apps {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+        }
+
+        .profile-pic {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
         .container {
             text-align: center;
         }
@@ -70,11 +97,16 @@
     </style>
 </head>
 <body>
+<div class="header">
+    <a href="#">Gmail</a>
+    <a href="#">Images</a>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Google_Apps_icon.svg" alt="Google Apps" class="google-apps">
+    <img src="https://via.placeholder.com/32" alt="User Profile" class="profile-pic">
+</div>
 <div class="container">
     <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" alt="Google Logo" class="logo">
     <div class="search-box">
         <input type="text" placeholder="Search Google or type a URL">
-
         <div class="buttons">
             <button>Google Search</button>
             <button>I'm Feeling Lucky</button>
