@@ -99,8 +99,26 @@
             color: #9aa0a6;
             font-size: 14px;
             z-index: 1;
-            pointer-events: none; /* This ensures the icon doesn't interfere with input interaction */
+            pointer-events: none;
         }
+        .voice-search,
+        .google-lens {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+        }
+
+        .voice-search {
+            right: 40px;
+        }
+
+        .google-lens {
+            right: 8px;
+        }
+
 
         .search-container input {
             width: 100%;
@@ -180,6 +198,8 @@
         <div class="search-container">
             <i class="fa-solid fa-magnifying-glass"></i>
             <input type="text" placeholder="Search Google or type a URL">
+            <img src="img/searchbyvoice.svg" alt="Voice Search" class="voice-search">
+            <img src="img/google-lens.svg" alt="Google Lens" class="google-lens">
         </div>
         <div class="buttons">
             <button>Google Search</button>
