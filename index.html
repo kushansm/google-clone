@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Google Clone</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=apps,experiment" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -12,88 +13,156 @@
             box-sizing: border-box;
         }
 
-
         body {
             display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
             flex-direction: column;
+            min-height: 100vh;
             background-color: #fff;
             font-family: Arial, sans-serif;
         }
 
         .header {
-            position: absolute;
-            top: 10px;
-            right: 20px;
             display: flex;
+            justify-content: flex-end;
             align-items: center;
+            padding: 15px 20px;
             gap: 15px;
-            font-size: 14px;
+            font-size: 13px;
         }
 
         .header a {
             text-decoration: none;
-            color: #5f6368;
-        }
-        .google-apps {
-            width: 24px;
-            height: 24px;
-            cursor: pointer;
+            color: #202124;
+            padding: 5px 10px;
         }
 
-        .profile-pic {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
+        .header a:hover {
+            text-decoration: underline;
+        }
+
+        .material-symbols-outlined {
+            color: #5f6368;
             cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+        }
+
+        .material-symbols-outlined:hover {
+            background-color: rgba(60,64,67,0.08);
+        }
+
+        .header > button {
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            padding: 9px 23px;
+            font-size: 14px;
+            font-weight: 500;
+            border-radius: 4px;
+            cursor: pointer;
+            letter-spacing: 0.25px;
+        }
+
+        .header > button:hover {
+            background-color: #2b7de9;
+            box-shadow: 0 1px 2px 0 rgba(66,133,244,0.3),0 1px 3px 1px rgba(66,133,244,0.15);
         }
 
         .container {
-            text-align: center;
-
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: -100px;
         }
 
-        .search-box{
-            width: 500px;
+        .search-box {
+            width: 584px;
             max-width: 90%;
-            margin:0 auto;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
         }
 
-        input {
+        .search-container {
+            position: relative;
             width: 100%;
-            padding: 12px;
+        }
+
+        .search-container .fa-magnifying-glass {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9aa0a6;
+            font-size: 14px;
+            z-index: 1;
+            pointer-events: none; /* This ensures the icon doesn't interfere with input interaction */
+        }
+
+        .search-container input {
+            width: 100%;
+            padding: 12px 50px;
             font-size: 16px;
             border-radius: 24px;
             border: 1px solid #dfe1e5;
             outline: none;
-            text-align: center;
+            background: transparent; /* This ensures the icon is visible */
         }
 
-        input:focus {
-            border-color: #4285f4;
-            box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+        .search-container input:hover {
+            box-shadow: 0 1px 6px rgba(32,33,36,.28);
+            border-color: rgba(223,225,229,0);
         }
 
-        button {
+        .search-container input:focus {
+            box-shadow: 0 1px 6px rgba(32,33,36,.28);
+            border-color: rgba(223,225,229,0);
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .buttons button {
             background-color: #f8f9fa;
-            border: 1px solid #dfe1e5;
-            padding: 10px 20px;
+            border: 1px solid #f8f9fa;
+            padding: 0 16px;
+            height: 36px;
             font-size: 14px;
-            margin: 5px;
             border-radius: 4px;
+            color: #3c4043;
             cursor: pointer;
         }
 
-        button:hover {
-            background-color: #e8e9eb;
+        .buttons button:hover {
+            box-shadow: 0 1px 1px rgba(0,0,0,.1);
+            background-color: #f8f9fa;
+            border: 1px solid #dadce0;
+            color: #202124;
         }
 
-
         .logo {
-            width: 272px; /* Google's logo size */
-            margin-bottom: 20px;
+            width: 272px;
+            margin-bottom: 26px;
+        }
+
+        @media (max-width: 584px) {
+            .search-box {
+                width: 95%;
+            }
+            .buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .buttons button {
+                width: 100%;
+                max-width: 300px;
+            }
         }
     </style>
 </head>
@@ -101,19 +170,21 @@
 <div class="header">
     <a href="#">Gmail</a>
     <a href="#">Images</a>
-    <span class="material-symbols-outlined experiment">experiment</span>
-    <span class="material-symbols-outlined google-apps">apps</span>
-    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="User Profile" class="profile-pic"> <!-- Fixed profile image -->
+    <span class="material-symbols-outlined">experiment</span>
+    <span class="material-symbols-outlined">apps</span>
+    <button id="sign-in">Sign in</button>
 </div>
 <div class="container">
     <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" alt="Google Logo" class="logo">
     <div class="search-box">
-        <input type="text" placeholder="Search Google or type a URL">
+        <div class="search-container">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Search Google or type a URL">
+        </div>
         <div class="buttons">
             <button>Google Search</button>
             <button>I'm Feeling Lucky</button>
         </div>
-
     </div>
 </div>
 </body>
